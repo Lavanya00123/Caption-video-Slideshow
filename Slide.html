@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+    <style media="screen">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: greenyellow;
+            overflow: hidden;
+        }
+        .container{
+            height: 400px;
+            width: 700px;
+            margin: 100px auto;
+            overflow:hidden;
+            position: relative;
+            perspective: 1000px;
+            -webkit-box-reflect: below 0px linear-gradient(transparent,transparent,#0004);
+        }
+        .container .slides{
+            height: 100%;
+            width: 500%;
+            display: flex;
+        }
+        .container .slides > video{
+            height: 100%;
+            width: 20%;
+            object-fit: cover;
+            transition: .3s ease-in; 
+        }
+        .container .slides > video ~ video{
+            transform: rotateY(-65deg);
+        }
+        input{
+            display: none;
+        }
+        .controls{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 50px;
+            width: 200px;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: .3s;
+        }
+        .container:hover .controls{
+            transform: scaleY(1);
+
+        }
+        .controls > label{
+            height: 25px;
+            width: 25px;
+            background: white;
+            border-radius: 50%;
+            margin: 5px;
+        }
+        .controls > label:hover{
+            cursor: pointer;
+            transition:.2s;
+            box-shadow:0px 0px 0px 3px rgba(0, 0, 0, 0.5) inset,0px 0px 0px 3px white;
+        }
+        .captions > .content{
+            position: absolute;
+            bottom: 40px;
+            right: 0px;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            padding: 10px;
+            font-family: tahoma;
+            text-align: right;
+            transform: translateX(200px);
+            transition: .2s;
+        }
+        #r1:checked ~ .container .slides video:nth-child(1){
+            margin-left:-0%;
+        }
+        #r2:checked ~ .container .slides video:nth-child(1){
+            margin-left:-20%;
+        }
+        #r3:checked ~ .container .slides video:nth-child(1){
+            margin-left:-40%;
+        }
+        #r4:checked ~ .container .slides video:nth-child(1){
+            margin-left:-60%;
+        }
+        #r1:checked ~ .container .slides video:nth-child(1),
+        #r2:checked ~ .container .slides video:nth-child(2),
+        #r3:checked ~ .container .slides video:nth-child(3),
+        #r4:checked ~ .container .slides video:nth-child(4){
+            transform: rotateY(0deg);
+        }
+        #r1:checked ~ .container .captions .content:nth-child(1),
+        #r2:checked ~ .container .captions .content:nth-child(2),
+        #r3:checked ~ .container .captions .content:nth-child(3),
+        #r4:checked ~ .container .captions .content:nth-child(4){
+            transform: translateX(0px);
+        }
+
+
+    </style>
+
+</head>
+<body>
+    <h2>
+        Caption video slider
+    </h2>
+    <input type="radio" name="buttons" id="r1">
+    <input type="radio" name="buttons" id="r2">
+    <input type="radio" name="buttons" id="r3">
+    <input type="radio" name="buttons" id="r4">
+
+  <div class="container">
+    <div class="slides">
+        <!-- <img src="./Img1.JPG">
+        <img src="./img2.JPG">
+        <img src="./img3.JPG">
+        <img src="./Img4.JPG"> -->
+        <video src="./161178 (360p).mp4" muted autoplay loop></video>
+        <video src="./motocross_-_10797 (360p).mp4" muted autoplay loop></video>
+        <video src="./road_-_64043 (360p) (1).mp4" muted autoplay loop></video>
+        <video src="./street_-_19627 (720p).mp4" muted autoplay loop></video>
+    </div>
+    <div class="controls">
+        <label for="r1"></label>
+        <label for="r2"></label>
+        <label for="r3"></label>
+        <label for="r4"></label>
+    </div>
+    <div class="captions">
+        <div class="content">
+            <h1>SunFlowers</h1>
+            <p>Giving a beautiful vibes</p>
+        </div>
+        <div class="content">
+            <h1>Bike Race</h1>
+            <p>Brave to face challenges</p>
+        </div>
+        <div class="content">
+            <h1>Motor Cycle</h1>
+            <p>Challenging the stamina</p>
+        </div>
+        <div class="content">
+            <h1>Traffic</h1>
+            <p>Stressfull Life</p>
+        </div>
+    </div>
+  </div>
+</body>
+</html> 
